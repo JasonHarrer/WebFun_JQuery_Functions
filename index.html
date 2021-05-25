@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="JQuery Function Assignment">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#wad-button1").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button2").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button3").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button4").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button5").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button6").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button7").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button8").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                $("#wad-button9").click(function() { $(this).slideUp(200, wadPopup($(".wad-button").index($(this)))) })
+                
+                // Send with -1, since that's not an option the random
+                // number generator will have, so that it's guaranteed to
+                // use the first random number it comes up with.
+                wadPopup(-1)
+
+                // What Does This Button Do?  (wdtbd)
+                $("#wdtbd-button").text("Don't click me.")
+                $("#wdtbd-button").click(function() {
+                    $("#wdtbd-img").toggle()
+                    if ($("#wdtbd-button").text() == "Don't click me.") {
+                        $("#wdtbd-img").addClass("wdtbd-img-clicked")
+                        $("#wdtbd-button").text("Click me to fix your mess.")
+                    } else {
+                        $("#wdtbd-button").removeClass("wdtbd-img-clicked")
+                        $("#wdtbd-button").text("Don't click me.")
+                    }
+                })
+
+                // Fader
+                $(".fader-button").eq(0).click(onFaderClick1)
+                $(".fader-button").eq(1).hide()
+                $(".fader-button").eq(1).click(onFaderClick2)
+                
+                // Automagically                
+                $("#auto-button").click(automagically)
+
+                //Random Form Completer
+                $("#rfc-button1").click(rfcCompleteForm)
+                $("#rfc-button2").click(rfcClearForm)
+
+                //What Will It Say This Time?!
+                $("#wwistt-container").hide()
+                $("#wwistt-button").click(wwisttButtonClick)
+            })
+
+            function onWadClick() {
+                $(this).slideUp(200, wadPopup( $(".wad-button").index($(this))))
+            }
+            
+            function wadPopup(currId) {
+                var armadillo = currId
+                while(armadillo == currId) {
+                    armadillo = Math.floor(Math.random() * 9)
+                }
+                $(".wad-button").eq(armadillo).slideDown(200)
+            }
+
+            function onFaderClick1() {
+                $(this).fadeOut(800, function() { $("#fader-2").fadeIn(800) })
+            }
+
+            function onFaderClick2() {
+                $(this).fadeOut(800, function() { $("#fader-1").fadeIn(800) })
+            }
+
+            async function automagically() {
+                var co1 = '<p class="autop" id="auto-1"></p>'
+                var do1 = '<p class="autop" id="auto-3"></p>'
+                var jo1 = '<p class="autop" id="auto-4"></p>'
+                var co2 = '<span>C</span><span>o</span>'
+                var do2 = '<span>D</span><span>o</span>'
+                var jo2 = '<span>J</span><span>o</span>'
+                var period = 1000
+
+                setTimeout(function() {
+                    $("#auto-2").after(do1)
+                    $("#auto-3").append(do2)
+                }, period)
+                setTimeout(function() {
+                    $("#auto-3").after(jo1)
+                    $("#auto-4").append(jo2)
+                }, period * 2)
+                setTimeout(function() {
+                    $("#auto-2").before(co1)
+                    $("#auto-1").append(co2)
+                }, period * 3)
+
+                setTimeout(function() {
+                    $("#auto-4").remove()
+                }, period * 5)
+                setTimeout(function() {
+                    $("#auto-1").remove()
+                }, period * 6)
+                setTimeout(function() {
+                    $("#auto-3").remove()
+                }, period * 7)
+            }
+
+            function rfcCompleteForm() {
+                var firstNames = ['Jimmy', 'Theresa', 'Mimi', 'Tyrone', 'Rudolph', 'Jose', 'Juanita', 'Jacques', 'Eli', 'Sally', 'Jessie']
+                var lastNames = ['Smith', 'Chen', 'Rodriguez', 'Washington', 'Taerk', 'Hanson', 'Visser', 'Hart', 'Zapala', 'Shay', 'Killian' ]
+                var favoriteFoods = ['Bananas', 'Pizza', 'Spaghetti', 'Moo Shoo Pork', 'Salads', 'Hot Dogs', 'Plums', 'Pho', 'Tacos', 'Enchiladas', 'Fois Gras', 'Chili' ]
+                var rndm
+                
+                $(".rfc-input").each(function(index) {
+                    switch($(this).attr("placeholder")) {
+                        case "First Name":
+                            rndm = Math.floor(Math.random() * firstNames.length)
+                            $(this).val(firstNames[rndm])
+                            break
+                        case "Last Name":
+                            rndm = Math.floor(Math.random() * lastNames.length)
+                            $(this).val(lastNames[rndm])
+                            break
+                        case "Favorite Food":
+                            rndm = Math.floor(Math.random() * firstNames.length)
+                            $(this).val(favoriteFoods[rndm])
+                            break
+                        case "Favorite Number":
+                            rndm = Math.floor(Math.random() * 100)
+                            $(this).val(rndm)
+                            break
+                    }
+                })
+            }
+
+            function rfcClearForm() {
+                $(".rfc-input").val("")
+            }
+
+            function wwisttButtonClick() {
+                var phrases = [ "<h4>If today is yesterday's tomorrow, does anyone really know what day it is?</h4>",
+                                "<p>I know you want to compare apples to apples,</p><h2>but I really do prefer orange juice.<h2>",
+                                "<h1>Spiffily</h1><h3>Neato</h3><h2>Keen!!</h2>",
+                                "<h4>This is the</h4><h2>Song That Never Ends!</h2><h3>It just goes on and on my friend...</h3>",
+                                "<h2>Doncha Wish Your Website Was Hot Like Me?</h2><h6>Yeah, me neither.</h6>",
+                                "<p>For once, I'm finally speechless...</p>"
+                              ]
+
+                var classes = [ "wwistt-blue", "wwistt-red", "wwistt-green", "wwistt-yellow" ]
+
+                console.log("wwistt click!")
+                console.log(phrases)
+                console.log(classes)
+                if ($("#wwistt-container").children().length > 0) {
+                    console.log("hide and clear out div")
+                    $("#wwistt-container").slideToggle()
+                    $("#wwistt-container").removeClass()
+                    $("#wwistt-container").html("")
+                } else {
+                    console.log("populate and show div")
+                    console.log("Lengths: " + phrases.length)
+                    console.log("         " + classes.length)
+                    var randomPhrase = Math.floor(Math.random() * phrases.length)
+                    var randomClass = Math.floor(Math.random() * classes.length)
+                    console.log("Random Results: " + randomPhrase)
+                    console.log("                " + randomClass)
+                    console.log("Phrase: " + phrases[randomPhrase] )
+                    $("#wwistt-container").html(phrases[randomPhrase])
+                    console.log("Class:  " + classes[randomClass])
+                    $("#wwistt-container").addClass(classes[randomClass])
+                    $("#wwistt-container").slideToggle()
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="line-1">
+            <fieldset id="wad">
+                <legend>Whack-A-Dilly</legend>
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button1">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button2">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button3">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button4">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button5">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button6">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button7">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button8">
+                    <img src="https://ids.si.edu/ids/download?id=NZP-20150208-9533CN_thumb" alt="Whack-A-Dilly" class="wad-button" id="wad-button9">
+            </fieldset>
+            <span id="line-1-span">
+                <fieldset id="wdtbd">
+                    <legend>What does this button do?</legend>
+                    <button id="wdtbd-button"></button>
+                    <img src="https://free-images.com/md/f043/blast_fire_explosion_light.jpg" alt="Picture of Explosion" id="wdtbd-img">
+                </fieldset>
+                <fieldset id="fader">
+                    <legend>Fader</legend>
+                    <button class="fader-button" id="fader-1">I'm fading...</button>
+                    <button class="fader-button" id="fader-2">I'm fading...</button>
+                </fieldset>
+            </span>
+            <fieldset id="rfc">
+                <legend>Rand Form Completer</legend>
+                <div class="rfc-button-div">
+                    <button id="rfc-button1">Complete Form</button>
+                    <button id="rfc-button2">Clear Form</button>
+                </div>
+                <form>
+                    <input type="text" placeholder="First Name" class="rfc-input">
+                    <input type="text" placeholder="Last Name" class="rfc-input">
+                    <input type="text" placeholder="Favorite Food" class="rfc-input">
+                    <input type="number" placeholder="Favorite Number" class="rfc-input">
+                </form>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset id="auto">
+                <legend><button id="auto-button">Automagically</button></legend>
+                <p class="autop" id="auto-2">
+                    <span>d</span>
+                    <span>i</span>
+                    <span>n</span>
+                    <span>g</span>
+                </p>
+            </fieldset>
+            <fieldset id="wwistt">
+                <legend><button id="wwistt-button">What Will It Say This Time?!</button></legend>
+                <div id="wwistt-container"></div>
+            </fieldset>
+        </div>
+    </body>
+</html>

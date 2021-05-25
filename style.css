@@ -1,0 +1,242 @@
+fieldset {
+    display: inline-block;
+}
+
+#line-1 {
+    margin: 5px;
+}
+
+#line-1-span {
+    display: inline-flex;
+    flex-direction: column;
+    min-height: 500px;
+    vertical-align: top;
+}
+
+
+/* wad (Whack-A-Dilly) */
+#wad {
+    width: 500px;
+    height: 450px;
+    padding: 10px;
+}
+
+.wad-button {
+    position: absolute;
+    display: none;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    padding: 5px;
+    border: solid 2px black;
+}
+
+.wad-button img {
+    height: 100px;
+    width: 100px;
+}
+
+#wad-button1 {
+    top: 50px;
+    left: 50px;
+}
+
+#wad-button2 {
+    top: 50px;
+    left: 200px;
+}
+
+#wad-button3 {
+    top: 50px;
+    left: 350px;
+}
+
+#wad-button4 {
+    top: 200px;
+    left: 50px;
+}
+
+#wad-button5 {
+    top: 200px;
+    left: 200px;
+}
+
+#wad-button6 {
+    top: 200px;
+    left: 350px;
+}
+
+#wad-button7 {
+    top: 350px;
+    left: 50px;
+}
+
+#wad-button8 {
+    top: 350px;
+    left: 200px;
+}
+
+#wad-button9 {
+    top: 350px;
+    left: 350px;
+}
+
+
+
+/* wdtbd (What Does This Button Do?) */
+#wdtbd {
+    height: 400px;
+    width: 400px;
+    padding: 5px;
+    vertical-align: top;
+}
+
+#wdtbd-button {
+    height: 50px;
+    width: 100%;
+    background-color: red;
+}
+
+#wdtbd-img {
+    display: none;
+}
+.wdtbd-img-clicked {
+    height: 325px;
+    width: 400px;
+}
+
+
+/* fader */
+#fader {
+    height: 40px;
+    min-width: 300px;
+}
+
+.fader-button {
+    color: lightgray;
+    background: darkgray;
+}
+
+#fader-2 {
+    margin-left: 275px;
+}
+
+#auto {
+    height: 250px;
+    min-width: 900px;
+    display: inline-flex;
+    vertical-align: top;
+}
+
+.autop {
+    display: inline-flex;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: Center;
+    background-origin:border-box;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.autop span {
+    flex: 1;
+}
+
+#auto-1 {
+    flex: 1;
+    color: white;
+    background-image: url("https://free-images.com/sm/2a6e/meerkat_together_meeting_1099578.jpg");
+}
+
+#auto-2 {
+    flex: 2;
+    background-image: url("https://free-images.com/sm/7246/bell_steeple_river_forest.jpg");
+    max-width: 500px;
+}
+
+#auto-3 {
+    flex: 1;
+    color: white;
+    background-image: url("https://free-images.com/sm/bef9/doe_hirsch_female_oversleeping.jpg");
+}
+
+#auto-4 {
+    flex: 1;
+    background-image: url("https://free-images.com/sm/f268/smile_lady_happy_885243.jpg");
+}
+
+#rfc {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: top;
+    width: 350px;
+}
+
+#rfc button {
+    margin: 10px 5px;
+}
+
+#rfc-button-div {
+    flex: 1;
+    display: flex;
+}
+
+#rfc-button-1 {
+    flex: 2;
+}
+
+#rfc-button-2 {
+    flex: 1;
+}
+
+#rfc form {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+#rfc form input {
+    flex: 1;
+    margin: 10px 5px;
+}
+
+
+/* What Will It Say This Time?! */
+#wwistt {
+    display: inline-block;
+    height: 250px;
+    vertical-align: top;
+    margin: 0;
+    width: 300px;
+    background-size: 100%;
+}
+
+#wwistt-button {
+    display: block;
+}
+
+#wwistt-container {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.wwistt-blue {
+    color: darkblue;
+    background-color: lightblue;
+}
+
+.wwistt-red {
+    color: red;
+    background-color: black;
+}
+
+.wwistt-green {
+    color: green;
+    background-color: white;
+}
+
+.wwistt-yellow {
+    color: yellow;
+    background-color: green;
+}
